@@ -1,7 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import Header from './components/header';
 import Search from './components/search';
+import Filters from './containers/filters';
 
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
         <div className="col-md-6 offset-md-3 text-center">
           <Header />
           <Search />
+          <Filters />
         </div>
       </div>
     </div>
