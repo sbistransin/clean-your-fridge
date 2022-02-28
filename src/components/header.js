@@ -1,8 +1,6 @@
-
-
 const Header = () => {
   return (
-    <div class="header">
+    <div className="header">
       <h1>Clean Your Fridge App</h1>
       <hr />
     </div>
