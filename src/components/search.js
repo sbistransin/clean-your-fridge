@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from "react-hook-form";
+import { getData } from '../action';
 import * as Yup from 'yup';
 
 let ingredientsSchema = Yup.object({'ingredients': Yup.string().required()}).required();
@@ -13,7 +14,9 @@ const Search = () => {
   })
 
   const handleFormSubmit = (data) => {
-    console.log(data);
+    dispatch (
+      getData(data)
+    )
   }
 
   return (
