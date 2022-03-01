@@ -11,12 +11,11 @@ export function getRecipes(ingredients, filters) {
   const filters_string = createFiltersURLstring(filters);
   
   let url = (`${ROOT_URL}${urlFormat}${APP_ID}${APP_KEY}${filters_string}`)
-  const request = axios.get(url).then(request => console.log(request));
-  
-  // return {
-  //   type: FETCH_RECIPES,
-  //   payload: request
-  // }
+  const request = axios.get(url);
+  return {
+    type: FETCH_RECIPES,
+    payload: request
+  }
 };
 
 const createFiltersURLstring = function(filters_array) {
