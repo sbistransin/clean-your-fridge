@@ -1,11 +1,10 @@
-import '../App.css'
-import { render } from "@testing-library/react";
 import { useSelector } from "react-redux";
 
 
 const Recipes = () => {
   const recipes = useSelector((state) => {
-    return state.recipes.hits
+    return state.recipes;
+    // return state.recipes.hits
   })
 
   if(recipes === undefined) {
@@ -15,12 +14,16 @@ const Recipes = () => {
   const renderRecipes = () => {
     return recipes.map((p) => {
       return (
-        <div className="row">
-          <div className="d-flex">
-            <img src={p.recipe.image} alt="" width="200" className=''/>
-            <h5 className="text-center width">{p.recipe.label}</h5>
+        <div className="recipe-card">
+          <div className="recipe-image">
+            <img src={p.recipe.image} alt=""/>
+          </div>
+          <div className="recipe-info">
+            <h5>{p.recipe.label}</h5>
             <p>{p.recipe.mealType}</p>
           </div>
+           
+            
         </div>
       )
     })
