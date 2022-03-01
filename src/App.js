@@ -2,6 +2,7 @@ import './App.css';
 import Header from './components/header';
 import Search from './components/search';
 import Filters from './containers/filters';
+import Recipes from './components/recipes';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
           <Header />
           <Search />
           <Filters />
+          <Recipes />
         </div>
       </div>
     </div>
