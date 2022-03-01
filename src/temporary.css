@@ -1,6 +1,23 @@
 .h-spacing {
   width: 500px;
-  height: 100px;
+  height: 200px;
 }
-* {
+
+.H-spacing {
+  padding: 25px;
+}
+
+.height {
+  height: 48px;
+}
+
+.background-blur {
+  backdrop-filter: blur(0px);
+}
+
+.error {
+  width: 225px;
+  margin-left: 12px;
+  backdrop-filter: brightness(55%);
+  padding-left: 5px;
 }
