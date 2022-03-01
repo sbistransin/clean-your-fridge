@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 
 const Recipes = () => {
   const recipes = useSelector((state) => {
-    return state.recipes;
-    // return state.recipes.hits
+    //return state.recipes;
+    return state.recipes.hits
   })
 
   if(recipes === undefined) {
@@ -14,15 +14,18 @@ const Recipes = () => {
   const renderRecipes = () => {
     return recipes.map((p) => {
       return (
-        <div className="recipe-container col-md-3">
-          <div className="recipe-card"> 
-            <img src={p.recipe.image} alt=""/>
-            <div className="recipe-info">
-              <h5>{p.recipe.label}</h5>
-              <p>{p.recipe.mealType}</p>
-            </div>
-          </div>    
+          <div className="col-md-3 d-flex">
+            <div className="card">
+               <img className="card-img-top" src={p.recipe.image} alt=""/>
+                <div className="card-body">
+                  <h6 className="card-title">{p.recipe.label}</h6>
+                  <p className="card-text">{p.recipe.mealType}</p>
+                </div>
+              
+          </div>
         </div>
+        
+        
       )
     })
   }

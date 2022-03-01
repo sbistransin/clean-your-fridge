@@ -14,8 +14,8 @@ function App() {
         </div>
       </div>
       <div class="recipe-section col-md-10 offset-md-1">
-        <div className="recipes-container row">
-          <Recipes /> 
+        <div className="recipes-container row card-deck">
+            <Recipes />  
         </div>
          
       </div>
