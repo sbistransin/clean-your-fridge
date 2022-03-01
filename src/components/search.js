@@ -1,12 +1,17 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from "react-hook-form";
-import { getData } from '../action';
+import { getRecipes } from '../action';
 import * as Yup from 'yup';
 
 let ingredientsSchema = Yup.object({'ingredients': Yup.string().required()}).required();
 
 const Search = () => {
+  
+  const filters_array = useSelector(state => {
+    return state.filters
+  });
+  
   const dispatch = useDispatch();
 
   const { register, handleSubmit, formState:{ errors } } = useForm({
@@ -15,7 +20,7 @@ const Search = () => {
 
   const handleFormSubmit = (data) => {
     dispatch (
-      getData(data)
+      getRecipes(data.ingredients, filters_array)
     )
   }
 
