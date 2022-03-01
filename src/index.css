@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+.header {
+  text-align: center;
+}
+
 .filters-box {
   border: solid lightgray;
   display: none;
