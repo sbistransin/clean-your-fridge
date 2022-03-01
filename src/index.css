@@ -11,11 +11,14 @@
   display: block;
 }
 
-.img {
-  height: 200px;
-  width: 200px;
+.recipes-container {
+  margin-top: 20px;
 }
 
-.width {
-  width: 559.6;
+.recipe-card img {
+  width: 100%;
+}
+
+.recipe-info {
+  background-color: lightgray;
 }

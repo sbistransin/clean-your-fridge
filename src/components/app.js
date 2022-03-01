@@ -13,10 +13,11 @@ function App() {
           <Filters />
         </div>
       </div>
-      <div class="row recipe-section">
-        <div class="col-md-12">
-          <Recipes />
+      <div class="recipe-section col-md-10 offset-md-1">
+        <div className="recipes-container row">
+          <Recipes /> 
         </div>
+         
       </div>
     </div>
   );

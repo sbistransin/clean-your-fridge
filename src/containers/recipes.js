@@ -14,16 +14,14 @@ const Recipes = () => {
   const renderRecipes = () => {
     return recipes.map((p) => {
       return (
-        <div className="recipe-card">
-          <div className="recipe-image">
+        <div className="recipe-container col-md-3">
+          <div className="recipe-card"> 
             <img src={p.recipe.image} alt=""/>
-          </div>
-          <div className="recipe-info">
-            <h5>{p.recipe.label}</h5>
-            <p>{p.recipe.mealType}</p>
-          </div>
-           
-            
+            <div className="recipe-info">
+              <h5>{p.recipe.label}</h5>
+              <p>{p.recipe.mealType}</p>
+            </div>
+          </div>    
         </div>
       )
     })
