@@ -1,4 +1,3 @@
-import '../App.css';
 import Header from './header';
 import Search from '../containers/search';
 import Filters from '../containers/filters';
@@ -12,6 +11,10 @@ function App() {
           <Header />
           <Search />
           <Filters />
+        </div>
+      </div>
+      <div class="row recipe-section">
+        <div class="col-md-12">
           <Recipes />
         </div>
       </div>
