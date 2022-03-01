@@ -13,11 +13,9 @@ const Filters = () => {
 
   const onCheckFilter = (e) => {
     if(e.target.checked) {
-      console.log("checked", e.target.value)
       dispatch(addFilter(e.target.value))
 
     } else {
-      console.log("unchecked", e.target.value)
       dispatch(removeFilter(e.target.value))
     }
   }
@@ -32,67 +30,67 @@ const Filters = () => {
       {showBox ? <div className="filters-box show">
         <form>
           <div className="form-check form-check-inline">
-            <input className="form-check-input" type="checkbox" id="inlineCheckbox1" value="Dairy-free" 
+            <input className="form-check-input" type="checkbox" id="inlineCheckbox1" value="dairy-free" 
               onChange={onCheckFilter}/>
             <label className="form-check-label" htmlFor="inlineCheckbox1">Dairy-Free</label>
           </div>
           <div className="form-check form-check-inline">
-            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="Egg-free" 
+            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="egg-free" 
               onChange={onCheckFilter}/>
             <label className="form-check-label" htmlFor="inlineCheckbox2">Egg-free</label>
           </div>
           <div className="form-check form-check-inline">
-            <input className="form-check-input" type="checkbox" id="inlineCheckbox3" value="Gluten-free" 
+            <input className="form-check-input" type="checkbox" id="inlineCheckbox3" value="gluten-free" 
               onChange={onCheckFilter}/>
             <label className="form-check-label" htmlFor="inlineCheckbox3">Gluten-free</label>
           </div>
           <div className="form-check form-check-inline">
-            <input className="form-check-input" type="checkbox" id="inlineCheckbox1" value="Fish-free" 
+            <input className="form-check-input" type="checkbox" id="inlineCheckbox1" value="fish-free" 
               onChange={onCheckFilter}/>
             <label className="form-check-label" htmlFor="inlineCheckbox1">Fish-free</label>
           </div>
           <div className="form-check form-check-inline">
-            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="Kosher" 
+            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="kosher" 
               onChange={onCheckFilter}/>
             <label className="form-check-label" htmlFor="inlineCheckbox2">Kosher</label>
           </div>
           <div className="form-check form-check-inline">
-            <input className="form-check-input" type="checkbox" id="inlineCheckbox3" value="Vegan" 
+            <input className="form-check-input" type="checkbox" id="inlineCheckbox3" value="vegan" 
               onChange={onCheckFilter}/>
             <label className="form-check-label" htmlFor="inlineCheckbox3">Vegan</label>
           </div>
           <div className="form-check form-check-inline">
-            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="Vegetarian" 
+            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="vegetarian" 
               onChange={onCheckFilter}/>
             <label className="form-check-label" htmlFor="inlineCheckbox2">Vegetarian</label>
           </div>
           <div className="form-check form-check-inline">
-            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="Peanut-Free" 
+            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="peanut-Free" 
               onChange={onCheckFilter}/>
             <label className="form-check-label" htmlFor="inlineCheckbox2">Peanut-Free</label>
           </div>
           <div className="form-check form-check-inline">
-            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="Pescatarian" 
+            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="pescatarian" 
               onChange={onCheckFilter}/>
             <label className="form-check-label" htmlFor="inlineCheckbox2">Pescatarian</label>
           </div>
           <div className="form-check form-check-inline">
-            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="Pork-Free" 
+            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="pork-Free" 
               onChange={onCheckFilter}/>
             <label className="form-check-label" htmlFor="inlineCheckbox2">Pork-Free</label>
           </div>
           <div className="form-check form-check-inline">
-            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="Red Meat-Free" 
+            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="red Meat-Free" 
               onChange={onCheckFilter}/>
             <label className="form-check-label" htmlFor="inlineCheckbox2">Red Meat-Free</label>
           </div>
           <div className="form-check form-check-inline">
-            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="Peanut-Free" 
+            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="peanut-Free" 
               onChange={onCheckFilter}/>
             <label className="form-check-label" htmlFor="inlineCheckbox2">Peanut-Free</label>
           </div>
           <div className="form-check form-check-inline">
-            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="Shellfish-Free" 
+            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="shellfish-Free" 
               onChange={onCheckFilter}/>
             <label className="form-check-label" htmlFor="inlineCheckbox2">Shellfish-Free</label>
           </div>
