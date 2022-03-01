@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import promise from "redux-promise";
+import reducers from "./reducers";
 
 
 
@@ -19,7 +20,7 @@ const dummyData = () => {
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={createStoreWithMiddleware(dummyData)}>
+    <Provider store={createStoreWithMiddleware(reducers)}>
       <App />
     </Provider>
   </React.StrictMode>,
