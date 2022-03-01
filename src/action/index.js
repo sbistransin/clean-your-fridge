@@ -12,7 +12,6 @@ export function getRecipes(ingredients, filters) {
   
   let url = (`${ROOT_URL}${urlFormat}${APP_ID}${APP_KEY}${filters_string}`)
   const request = axios.get(url);
-  
   return {
     type: FETCH_RECIPES,
     payload: request

@@ -65,7 +65,7 @@ const Filters = () => {
             <label className="form-check-label" htmlFor="inlineCheckbox2">Vegetarian</label>
           </div>
           <div className="form-check form-check-inline">
-            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="peanut-Free" 
+            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="peanut-free" 
               onChange={onCheckFilter}/>
             <label className="form-check-label" htmlFor="inlineCheckbox2">Peanut-Free</label>
           </div>
@@ -75,22 +75,22 @@ const Filters = () => {
             <label className="form-check-label" htmlFor="inlineCheckbox2">Pescatarian</label>
           </div>
           <div className="form-check form-check-inline">
-            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="pork-Free" 
+            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="pork-free" 
               onChange={onCheckFilter}/>
             <label className="form-check-label" htmlFor="inlineCheckbox2">Pork-Free</label>
           </div>
           <div className="form-check form-check-inline">
-            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="red Meat-Free" 
+            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="red-meat-free" 
               onChange={onCheckFilter}/>
             <label className="form-check-label" htmlFor="inlineCheckbox2">Red Meat-Free</label>
           </div>
           <div className="form-check form-check-inline">
-            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="peanut-Free" 
+            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="keto-friendly" 
               onChange={onCheckFilter}/>
-            <label className="form-check-label" htmlFor="inlineCheckbox2">Peanut-Free</label>
+            <label className="form-check-label" htmlFor="inlineCheckbox2">Keto-Friendly</label>
           </div>
           <div className="form-check form-check-inline">
-            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="shellfish-Free" 
+            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="shellfish-free" 
               onChange={onCheckFilter}/>
             <label className="form-check-label" htmlFor="inlineCheckbox2">Shellfish-Free</label>
           </div>
