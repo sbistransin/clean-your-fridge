@@ -1,17 +1,13 @@
 import '../temporary.css'
+import background from '../photo/background-photo.jpg'
+
 const Header = () => {
   return (
-    <div>
+    <div className='d-flex align-items-center justify-content-center mt-5 H-spacing'>
       <div 
-      className="header h-spacing">
-        <h1 className="mb-0">Clean Your Fridge App</h1>
+      className="header h-spacing bg-light rounded jumbotron">
+        <p className='display-4 m-4'>Clean Your Fridge App</p>
       </div>
-      <div style={{  
-        backgroundImage: "url(" + "https://images.pexels.com/photos/34153/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350" + ")",
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat'
-}}></div>
     </div>
   )
 }
