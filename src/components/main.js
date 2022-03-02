@@ -1,0 +1,19 @@
+import { Switch, Route } from 'react-router-dom';
+import Home from './home';
+import Recipes from './recipes';
+import Refrigerator from '../containers/refrigerator';
+
+const Main = () => {
+  return (
+    <div className="row">
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/refrigerator" component={Refrigerator} />
+        <Route path="/recipes" component={Recipes} />
+      </Switch>
+    </div>
+    
+  )
+}
+
+export default Main
