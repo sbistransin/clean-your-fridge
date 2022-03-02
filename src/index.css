@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.home-page {
+  margin-top: 30px;
+  text-align: center;
+}
+
 .filters-box {
   border: solid lightgray;
   display: none;
@@ -17,8 +22,46 @@
 
 .card {
   margin-bottom: 20px;
+  max-width: 18em;
+  min-width: 0;
+}
+
+.card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card-body {
-  background-color: lightgoldenrodyellow;
+  background-color: #f4f4f4;
+}
+
+/* RECIPE PAGE */
+
+.recipe-row {
+  margin-top: 30px;
+}
+
+.recipe-card-header {
+  font-size: 30px;
+  padding-top: 100px;
+}
+
+.recipe-type {
+  text-transform: capitalize;
+}
+
+.card-image-container {
+  padding: 30px;
+  max-height: 350px;
+  max-width: 500px;
+  overflow: hidden;
+}
+
+.ingredients-list,
+.health-list {
+  margin-top: 50px;
+}
+.recipe-info {
+  font-size: 14px;
 }
