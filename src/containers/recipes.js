@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 
 const Recipes = () => {
   const recipes = useSelector((state) => {
-    //return state.recipes;
-    return state.recipes.hits
+    return state.recipes;
+    // return state.recipes.hits
   })
 
   if(recipes === undefined) {
