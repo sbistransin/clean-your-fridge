@@ -2,7 +2,7 @@ import Header from './header';
 import Search from '../containers/search';
 import Filters from '../containers/filters';
 import Recipes from '../containers/recipes';
-import background from '../photo/background-photo.jpg'
+import background from '../photo/better-photo.jpg'
 
 function App() {
   return (

@@ -7,12 +7,16 @@
   padding: 25px;
 }
 
+.logo {
+  margin: 33px 24px;
+}
+
 .height {
-  height: 48px;
+  height: 50px;
 }
 
 .background-blur {
-  backdrop-filter: blur(0px);
+  backdrop-filter: blur(3px);
 }
 
 .error {
@@ -20,4 +24,16 @@
   margin-left: 12px;
   backdrop-filter: brightness(55%);
   padding-left: 5px;
+}
+
+.text-color {
+  color: white;
+}
+
+.spacing {
+  width: 100px;
+}
+
+.font-link {
+  font-family: "Alegreya", serif;
 }
