@@ -65,3 +65,31 @@
 .recipe-info {
   font-size: 14px;
 }
+
+/* FRIGE PAGE */
+.frige-row {
+  margin-top: 30px;
+}
+
+.ingredients-box {
+  margin-top: 30px;
+  background-color: lightgoldenrodyellow;
+  height: 300px;
+}
+
+.frige-header {
+  margin-top: 30px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.frige-inventory-header {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 20px;
+}
+
+.frige-box {
+  background-color: silver;
+  height: 600px;
+}
