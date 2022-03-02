@@ -35,6 +35,7 @@ const Search = () => {
         <input
           className="form-control"
           aria-label="Enter some ingredients"
+          placeholder='Ingredients...'
           {... register('ingredients')}
         />
         <div className="input-group-append">
