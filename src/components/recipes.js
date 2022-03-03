@@ -8,7 +8,7 @@ const Recipes = () => {
     <Switch>
       <Route exact path="/recipes" component={RecipesList} />
       <Route path="/recipes/:index" component={RecipeCard} />
-  </Switch>
+    </Switch>
   )
 
 };

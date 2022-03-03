@@ -16,14 +16,26 @@
   display: block;
 }
 
-.recipes-container {
-  margin-top: 20px;
+/* RECIPES PAGE */
+
+.recipe-page-title {
+  margin-top: 30px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+/* .recipe-section {
+  margin-top: 55px;
+} */
+
+.fridge-box-in-search {
+  height: 400px;
+  background-color: silver;
 }
 
 .card {
   margin-bottom: 20px;
-  max-width: 18em;
-  min-width: 0;
+  width: 18em;
 }
 
 .card-title {
