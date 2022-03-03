@@ -3,12 +3,14 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { addIngredient, removeIngredient } from '../action/refrigerator-actions'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faXmark} from '@fortawesome/free-solid-svg-icons';
 
 let fridgeSchema = Yup.object({
   'ingredient': Yup.string().required(),
     // .typeError()
     // .required('This is a required field'),
-  'expiration': Yup.date()
+  'expiration': Yup.number()
     .typeError('Expiration must be a date')
     .required('This is a required field')
 }).required();
@@ -22,6 +24,7 @@ const Refrigerator = () => {
   });
 
   const handleFormSubmit = (ingredient, e) => {  
+    debugger;
     dispatch (
       addIngredient(ingredient)
     );
@@ -49,7 +52,13 @@ const Refrigerator = () => {
     if (ingredients.length > 0) {
       return ingredients.map((p) => {
         return (
-          <li>{p.ingredient} - Expires in {p.expiration} day(s) - {removeButton(p)}</li>
+          <div className="icons">
+              
+              <li className="ingredient-item">
+                <span className="remove-ingredient"><FontAwesomeIcon icon={faXmark} className="remove-ingredient"/></span>{p.ingredient} - Expires in {p.expiration} day(s) - {removeButton(p)}
+              </li>         
+         </div>
+          
         )
       })
     }
@@ -88,7 +97,7 @@ const Refrigerator = () => {
         <div id="h-color" className="col-md-6 jumbotron rounded">
         <h5 className="display-6 frige-inventory-header">Refrigerator Contents:</h5>
         <div className="d-flex justify-content-center fridge-ingredients">
-          <ul class="lead">
+          <ul className="lead">
             {renderIngredients()}
           </ul>
         </div>
