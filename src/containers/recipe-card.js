@@ -47,7 +47,7 @@ const RecipeCard = props => {
       </div>
       <div className="col-md-5">
         <div className="card-image-container">
-            <img className="card-img-top" src={recipe.images.LARGE.url} alt=""/>
+            <img className="card-img-top" src={recipe.image} alt=""/>
         </div>
       </div>
       <div className="col-md-4 offset-2 ingredients-list">

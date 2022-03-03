@@ -126,9 +126,11 @@
 
 .card-image-container {
   padding: 30px;
-  max-height: 350px;
-  max-width: 500px;
+  /* max-height: 350px;
+  max-width: 500px; */
   overflow: hidden;
+  height: 300;
+  width: auto;
 }
 
 .ingredients-list,
