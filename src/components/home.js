@@ -9,9 +9,7 @@ const Home = () => {
     if(ingredients.length > 0) {
       return ingredients.map((p) => {
         return (
-          <ul className="lead">
-            <li>{p.ingredient} - Expires in {p.expiration} day(s)</li>
-          </ul>
+            <li className="lead">{p.ingredient} - Expires in {p.expiration} day(s)</li>
         )
       })
     }
@@ -19,12 +17,12 @@ const Home = () => {
   }
   return (
     <div className="row">
-      <div id="h-color" className="offset-md-4 col-md-4 jumbotron mt-5 rounded">
+      <div id="h-color" className="offset-md-3 col-md-6 jumbotron mt-5 rounded">
         <p className="display-4 test text-center">Your Fridge:</p>
         <div className="d-flex justify-content-center">
-          <div>
+          <ul>
             {renderIngredients()}
-          </div>
+          </ul>
         </div>
       </div>
       <div className="home-page">

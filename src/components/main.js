@@ -6,11 +6,14 @@ import Header from './header';
 
 const Main = () => {
   return (
+    <div className="main">
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/refrigerator" component={Refrigerator} />
         <Route path="/recipes" component={Recipes} />
-      </Switch> 
+      </Switch>
+    </div>
+       
   )
 }
 
