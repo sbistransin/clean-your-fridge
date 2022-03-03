@@ -1,18 +1,15 @@
-import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { addIngredient, removeIngredient } from '../action/refrigerator-actions'
-import Header from '../components/header'
 
 let fridgeSchema = Yup.object({
   'ingredient': Yup.string().required(),
     // .typeError()
     // .required('This is a required field'),
-  'expiration': Yup.number()
-    .typeError('Expiration must be a number')
-    .positive('Expiration must be a positive number')
+  'expiration': Yup.date()
+    .typeError('Expiration must be a date')
     .required('This is a required field')
 }).required();
 
@@ -24,11 +21,14 @@ const Refrigerator = () => {
     resolver: yupResolver(fridgeSchema)
   });
 
-  const handleFormSubmit = (ingredient) => {
+  const handleFormSubmit = (ingredient, e) => {  
     dispatch (
       addIngredient(ingredient)
     );
     renderIngredients();
+
+    e.target.elements.ingredient.value = ''
+    e.target.elements.expiration.value = ''
   }
 
   const remove = (e) => {
@@ -36,15 +36,14 @@ const Refrigerator = () => {
       removeIngredient(e)
     )
   }
-//{<p className="font-italic" onClick={() => remove(p)}>remove</p>}
+
   const removeButton = (e) => {
     return (
-      // <p onClick={() => remove(e)}className="remove-button">remove</p>
-
-      //can't figure out a design that works without using a button
-      <button className="btn btn-outline-dark remove-button">remove</button>
+      <button className="btn btn-outline-dark remove-button"
+        onClick={() => remove(e)}>remove</button>
     )
   }
+
 
   const renderIngredients = () => {
     if (ingredients.length > 0) {
@@ -60,38 +59,40 @@ const Refrigerator = () => {
   return (
     <div>
       <div className="row frige-row">
-        <h1 className="frige-header display-3">Refrigerator Inventory</h1>
-        <div className="ingredients-box col-md-4 offset-md-1">
-          <p className="frige-inventory-header display-6">Add Ingredients</p>
-          <form onSubmit={handleSubmit(handleFormSubmit)} >
-            <div className="row d-flex justify-content-center">
-              <input 
-                placeholder='Ingredient'
-                className="form-control fridge-inputs border-dark" 
-                {... register('ingredient')}>                 
-              </input>
-              <p className="text-danger mb-3 fridge-inputs">{errors.ingredient?.message}</p>
-              <label className="display-6 text-center mb-3">Expiration</label>
-              <input 
-                placeholder="Expiration"
-                type='number'
-                className="form-control fridge-inputs border-dark"
-                {... register('expiration')}>
-              </input>
-              <p className="text-danger mb-3 fridge-inputs">{errors.expiration?.message}</p>
-            </div>
-            <input type='submit' className="btn btn-outline-dark" />
-          </form>
+        <h2 className="frige-header">Refrigerator Inventory</h2>
+        <div className="column-container col-md-4 offset-md-1">
+          <div className="ingredients-box rounded">
+            <div className="ingredient-box-inner">
+              <h5 className="frige-inventory-header">Add Ingredients</h5>
+                <form onSubmit={handleSubmit(handleFormSubmit)} >
+                  <div className="row d-flex justify-content-center ingredient-input-box">
+                    <input 
+                      placeholder='Ingredient'
+                      className="form-control fridge-inputs border-dark"
+                      {... register('ingredient')}>                 
+                    </input>
+                    <p className="text-danger mb-3 fridge-inputs">{errors.ingredient?.message}</p>
+                    <input 
+                      placeholder="Expiration"
+                      type='number'
+                      className="form-control fridge-inputs border-dark"
+                      {... register('expiration')}>
+                    </input>
+                    <p className="text-danger mb-3 fridge-inputs">{errors.expiration?.message}</p>
+                  </div>
+                  <input type='submit' className="btn btn-outline-dark ingredient-submit" />
+                </form>   
+            </div> 
+          </div>
         </div>
-        <div className="frige-box col-md-5 offset-md-1">
-          <p className="frige-inventory-header display-6">Refrigerator Contents</p>
-          <ul className="fridge-ingredients">
+        <div id="h-color" className="col-md-6 jumbotron rounded">
+        <h5 className="display-6 frige-inventory-header">Refrigerator Contents:</h5>
+        <div className="d-flex justify-content-center fridge-ingredients">
+          <ul class="lead">
             {renderIngredients()}
           </ul>
         </div>
-        <div className="col-md-3">
-          <button className="btn btn-primary">Search for Recipes</button>
-        </div>
+      </div>
       </div>
     </div>
   )
