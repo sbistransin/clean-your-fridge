@@ -951,7 +951,7 @@ const TEST_RESPONSE = [
 
 
 
-const RecipeReducer = function(state = TEST_RESPONSE, action) {
+const RecipeReducer = function(state = [], action) {
   switch(action.type) {
     case FETCH_RECIPES: 
       // return action.payload.data;

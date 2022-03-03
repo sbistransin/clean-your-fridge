@@ -7,12 +7,10 @@ const RecipeCard = props => {
   //const recipe = PlayerAPI.get(parseInt(props.match.params.number, 10));
   const recipe = useSelector((state) => {
     return state.recipes[props.match.params.index].recipe;
-    // return state.recipes.hits[index]
+    // return state.recipes.hits[props.match.params.index].recipe;
   })
 
-  if (!recipe) {
-    return <div>Sorry, but the recipe was not found</div>;
-  }
+  
 
   const renderIngredients = () => {
     return recipe.ingredientLines.map((i) => {
@@ -24,6 +22,10 @@ const RecipeCard = props => {
     return recipe.healthLabels.map((i) => {
       return <div>{i}</div>
     })
+  }
+  
+  if (!recipe) {
+    return <div>Sorry, but the recipe was not found</div>;
   }
   return (
     <div class="recipe-row row">
