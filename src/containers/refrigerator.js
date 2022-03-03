@@ -8,7 +8,7 @@ let fridgeSchema = Yup.object({
   'ingredient': Yup.string().required(),
     // .typeError()
     // .required('This is a required field'),
-  'expiration': Yup.date()
+  'expiration': Yup.number()
     .typeError('Expiration must be a date')
     .required('This is a required field')
 }).required();
