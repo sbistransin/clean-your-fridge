@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { addFilter, removeFilter } from '../action/filter-actions';
 import { getRecipes } from '../action';
 import Header from '../components/header';
+import { TEST_RESPONSE } from "../reducers/reducer-recipes";
 
 import { Link } from "react-router-dom";
 const RecipesList = (props) => {
@@ -16,11 +17,9 @@ const RecipesList = (props) => {
     // page loads
   }, [getRecipes]);
 
-  const recipes = useSelector((state) => {
-
-    // return state.recipes;
-    return state.recipes.hits
-  })
+  const recipes = useSelector(({ recipes }) => recipes.hits);
+  
+  // const recipes = TEST_RESPONSE
 
   const filters_array = useSelector(state => {
     return state.filters
@@ -71,7 +70,9 @@ const RecipesList = (props) => {
 
   const handleSearchRecipes = () => {
     console.log("search")
-    dispatch (getRecipes(selectedIngredients, filters_array ))
+    dispatch (
+      getRecipes(selectedIngredients, filters_array )
+    )
   }
 
 
@@ -85,7 +86,7 @@ const RecipesList = (props) => {
     // }
     return recipes.map((p, index) => {
       return (
-          <div className="col-md-4 d-flex" key={index} onClick={(e) => handleRecipeCardClick(index, e)}>
+          <div className="col-md-4 d-flex" key={index} onClick={(p) => handleRecipeCardClick(index, p)}>
             <div className="card">
                <img className="card-img-top" src={p.recipe.image} alt=""/>
                 <div className="card-body">
@@ -116,8 +117,6 @@ const RecipesList = (props) => {
   }
 
   return ( 
-    <div>
-    <Header />
     <div className="row recipe-page">
       {/* <h2 className="recipe-page-title">Search for Recipes</h2> */}
       <div className="recipe-section col-md-6 offset-md-1">
@@ -213,9 +212,7 @@ const RecipesList = (props) => {
           onClick={handleSearchRecipes}>New Search</button>
         <Link to='/refrigerator'>Add to Fridge</Link>
       </div>
-    </div>
-    </div>
-    
+    </div>    
   )
 }
 

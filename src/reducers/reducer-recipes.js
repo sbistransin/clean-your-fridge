@@ -1,6 +1,6 @@
 import { FETCH_RECIPES } from '../action';
 
-const TEST_RESPONSE = [
+export const TEST_RESPONSE = [
   {
     "recipe": {
        "uri": "http://www.edamam.com/ontologies/edamam.owl#recipe_f9f93d619b11bb45bfcaae5d304c8173",
@@ -955,7 +955,6 @@ const RecipeReducer = function(state = [], action) {
   switch(action.type) {
     case FETCH_RECIPES: 
       return action.payload.data;
-      // return action.payload;
     default: 
       return state;  
   }
