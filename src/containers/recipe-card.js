@@ -8,11 +8,15 @@ const RecipeCard = props => {
   // useEffect (() => {
   // }, []);
 
-  const recipe = useSelector((state) => {
-    // return state.recipes[props.match.params.index].recipe;
-    const recipeIndex = parseInt(props.match.params.index)
-    return state.recipes.hits[recipeIndex].recipe;
-  })
+  // const recipe = useSelector((state) => {
+  //   // return state.recipes[props.match.params.index].recipe;
+  //   const recipeIndex = parseInt(props.match.params.index)
+  //   return state.recipes.hits[recipeIndex].recipe;
+  // })
+
+  const recipe = useSelector(({ recipes }) => {
+    return recipes.hits[parseInt(props.match.params.index)].recipe;
+  });
 
   const renderIngredients = () => {
     return recipe.ingredientLines.map((i, index) => {
