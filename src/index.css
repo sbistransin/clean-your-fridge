@@ -156,9 +156,6 @@
   padding-top: 15px;
 }
 
-.ingredient-submit {
-}
-
 .filters-box-inner,
 .ingredient-box-inner {
   padding: 10px;
@@ -192,6 +189,14 @@
 
 .fridge-ingredients {
   padding: 20px;
+}
+
+.ingredient-item {
+  list-style-type: none;
+}
+
+span .remove-ingredient {
+  padding-right: 10px;
 }
 
 .fridge-inputs {
