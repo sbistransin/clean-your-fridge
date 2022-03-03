@@ -4,7 +4,7 @@ import Main from './main';
 function App() {
   return (
     <div className="container-fluid">     
-        <Header />
+        {/* <Header /> */}
         <Main />
     </div>
 

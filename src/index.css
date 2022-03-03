@@ -2,10 +2,19 @@
   text-align: center;
 }
 
-.home-page {
-  margin-top: 30px;
-  text-align: center;
+#height {
+  height: 70px;
+  border-bottom: 1px lightgrey solid;
 }
+
+/* .header-spacing {
+  padding-top: 10px;
+  height: auto;
+  width: 300px;
+  margin-right: 10px;
+
+   backdrop-filter: blur(2px) brightness(75%); 
+} */
 
 .filters-box {
   border: solid lightgray;
@@ -34,6 +43,46 @@
 
 .card-body {
   background-color: #f4f4f4;
+}
+
+/* HOME PAGE */
+.home-page {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.home-height {
+  height: 745px;
+}
+
+.home-button {
+  width: 150px;
+  height: 45px;
+  margin: 40px;
+  backdrop-filter: blur(2px) brightness(75%);
+}
+
+.header-link {
+  height: 70px;
+  width: 125px;
+  padding: 0px;
+  border-left: solid 1px lightgrey;
+  border-bottom: solid 1px lightgrey;
+  color: black;
+}
+
+.header-button {
+  margin-left: 633px;
+}
+
+.header-link :hover {
+  background-color: lightgrey;
+}
+
+.buttons {
+  margin: 0px;
+  width: 125px;
+  height: 70px;
 }
 
 /* RECIPE PAGE */

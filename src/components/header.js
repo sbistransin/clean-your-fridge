@@ -1,19 +1,28 @@
-import '../temporary.css'
-import background from '../photo/better-photo.jpg'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
-    <div className="row">
-      <div style={{ backgroundImage: `url(${background})` }}>
-        <div className="col-md-6 offset-md-3">
-          <div className='d-flex align-items-center justify-content-center mt-5 mb-5 H-spacing'>
-            <div className="header h-spacing bg-light rounded jumbotron">
-              <p className='display-4 logo font-link'>Clean Your Fridge App</p>
-            </div>
-          </div>
-        </div>
+    <div id='height'className='row sticky-top bg-white'>
+      <p className='col-md-4 display-5 font-link pt-1'>Clean Your Fridge</p>
+      <Link to='/' className='btn header-link header-button header-buttons'><p className='lead buttons'>Home</p></Link>
+      <Link to='/' className='btn header-link header-buttons'><p className='lead buttons'>Ingredients</p></Link>
+      <Link to='/' className='btn header-link header-buttons'><p className='lead buttons'>Recipes</p></Link>
+      {/* <div className='header-link home-button'>
+        yo
       </div>
+      <div className='header-link'>
+        <Link to="/" className="col-md-1 header-link">Ingredients</Link>
+      </div>
+      <div className='header-link'>
+        <Link to="/" className="col-md-1 header-link">Recipes</Link>
+  </div>    */}
     </div>
+    // <div className="row">
+    //   <div id="height">
+    //     <p className='display-6  font-link header-spacing'>Clean Your Fridge </p>
+    //     <Link to="/" className="btn btn-outline-light home-button">Home</Link>
+    //   </div>
+    // </div>
   )
 }
 
