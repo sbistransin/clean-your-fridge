@@ -7,15 +7,6 @@
   border-bottom: 1px lightgrey solid;
 }
 
-/* .header-spacing {
-  padding-top: 10px;
-  height: auto;
-  width: 300px;
-  margin-right: 10px;
-
-   backdrop-filter: blur(2px) brightness(75%); 
-} */
-
 .filters-box {
   border: solid lightgray;
   display: none;
@@ -23,6 +14,11 @@
 
 .show {
   display: block;
+}
+
+.remove-button {
+  font-style: italic;
+  padding: 0px 4px;
 }
 
 /* RECIPES PAGE */
@@ -61,6 +57,10 @@
 .home-page {
   margin-top: 30px;
   text-align: center;
+}
+
+#h-color {
+  background-color: #ebebeb;
 }
 
 .home-height {
