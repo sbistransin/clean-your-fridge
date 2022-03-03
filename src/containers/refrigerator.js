@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
-import { addIngredient } from '../action/refrigerator-actions'
+import { addIngredient, removeIngredient } from '../action/refrigerator-actions'
 import Header from '../components/header'
 
 let fridgeSchema = Yup.object({
@@ -31,22 +31,35 @@ const Refrigerator = () => {
     renderIngredients();
   }
 
+  const remove = (e) => {
+    dispatch (
+      removeIngredient(e)
+    )
+  }
+//{<p className="font-italic" onClick={() => remove(p)}>remove</p>}
+  const removeButton = (e) => {
+    return (
+      // <p onClick={() => remove(e)}className="remove-button">remove</p>
+
+      //can't figure out a design that works without using a button
+      <button className="btn btn-outline-dark remove-button">remove</button>
+    )
+  }
+
   const renderIngredients = () => {
     if (ingredients.length > 0) {
       return ingredients.map((p) => {
         return (
-          <li>{p.ingredient} - Expires in {p.expiration} day(s)</li>
+          <li>{p.ingredient} - Expires in {p.expiration} day(s) - {removeButton(p)}</li>
         )
       })
     }
-    return <div>No ingredients</div>
+    return <div className="lead">No ingredients!</div>
   }
 
   return (
     <div>
-      <Header />
       <div className="row frige-row">
-        <Link to='/' className='btn btn-outline-dark fridge-back-button'>Back</Link>
         <h1 className="frige-header display-3">Refrigerator Inventory</h1>
         <div className="ingredients-box col-md-4 offset-md-1">
           <p className="frige-inventory-header display-6">Add Ingredients</p>

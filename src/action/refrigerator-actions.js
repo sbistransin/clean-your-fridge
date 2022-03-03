@@ -8,3 +8,10 @@ export function addIngredient(ingredient) {
   }
 };
 
+export function removeIngredient(ingredient) {
+  return {
+    type: REMOVE_INGREDIENT,
+    payload: ingredient
+  }
+}
+

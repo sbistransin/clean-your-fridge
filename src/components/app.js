@@ -3,8 +3,8 @@ import Main from './main';
 
 function App() {
   return (
-    <div className="container-fluid">     
-        {/* <Header /> */}
+    <div id="width" className="container-fluid ">     
+        <Header />
         <Main />
     </div>
 
