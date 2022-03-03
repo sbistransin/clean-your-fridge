@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.main {
+  top-margin: 100px;
+}
+
 #height {
   height: 70px;
   border-bottom: 1px lightgrey solid;
@@ -143,27 +147,49 @@
 .ingredients-box {
   margin-top: 0px;
   background-color: lightgoldenrodyellow;
+  height: 235px;
+}
+
+.ingredient-input-box {
+  padding-top: 15px;
+}
+
+.ingredient-submit {
+}
+
+.filters-box-inner,
+.ingredient-box-inner {
+  padding: 10px;
+}
+
+.filters-box-2 {
+  margin-top: 15px;
+  background-color: lightblue;
   height: 300px;
 }
 
+.form-body {
+  padding: 10px;
+}
+
 .frige-header {
-  margin-top: 30px;
+  margin-top: 20px;
   margin-bottom: 50px;
   text-align: center;
 }
 
 .frige-inventory-header {
+  padding-top: 10px;
   text-align: center;
-  margin-top: 15px;
 }
 
 .frige-box {
   background-color: silver;
-  height: 600px;
+  height: 400px;
 }
 
 .fridge-ingredients {
-  padding-left: 100px;
+  padding: 20px;
 }
 
 .fridge-inputs {

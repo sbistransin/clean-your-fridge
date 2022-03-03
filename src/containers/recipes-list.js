@@ -117,7 +117,6 @@ const RecipesList = (props) => {
 
   return ( 
     <div>
-    <Header />
     <div className="row recipe-page">
       {/* <h2 className="recipe-page-title">Search for Recipes</h2> */}
       <div className="recipe-section col-md-6 offset-md-1">
