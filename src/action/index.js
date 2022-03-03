@@ -967,7 +967,6 @@ export function getRecipes(ingredients, filters) {
   //   type: FETCH_RECIPES,
   //   payload: request
   // }
-
   return {
     type: FETCH_RECIPES,
     payload: TEST_RESPONSE
