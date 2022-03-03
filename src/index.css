@@ -33,13 +33,21 @@
   text-align: center;
 }
 
-/* .recipe-section {
+.recipe-section {
+  margin-top: 100px;
+}
+
+.fridge-section {
   margin-top: 55px;
-} */
+}
 
 .fridge-box-in-search {
   height: 400px;
   background-color: silver;
+}
+
+.search-buttons {
+  width: 100%;
 }
 
 .card {

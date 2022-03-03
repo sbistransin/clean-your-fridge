@@ -1,34 +1,39 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-
+//import { useEffect } from "react";
 
 const RecipeCard = props => {
   
-  //const recipe = PlayerAPI.get(parseInt(props.match.params.number, 10));
+  // not sure if this will fix it
+  // useEffect (() => {
+  // }, []);
+
   const recipe = useSelector((state) => {
-    return state.recipes[props.match.params.index].recipe;
-    // return state.recipes.hits[props.match.params.index].recipe;
+    // return state.recipes[props.match.params.index].recipe;
+    const recipeIndex = parseInt(props.match.params.index)
+    return state.recipes.hits[recipeIndex].recipe;
   })
 
-  
-
   const renderIngredients = () => {
-    return recipe.ingredientLines.map((i) => {
-      return <div>{i}</div>
+    return recipe.ingredientLines.map((i, index) => {
+      return <div key={index}>{i}</div>
     })
   }
 
   const renderHealth = () => {
-    return recipe.healthLabels.map((i) => {
-      return <div>{i}</div>
+    return recipe.healthLabels.map((i, index) => {
+      return <div key={index}>{i}</div>
     })
   }
   
   if (!recipe) {
-    return <div>Sorry, but the recipe was not found</div>;
+    return (
+    <div>Sorry, but the recipe was not found</div>
+    );
   }
+
   return (
-    <div class="recipe-row row">
+    <div className="recipe-row row">
       <Link to="/recipes">Back to Recipes</Link>
       <Link to="/refrigerator">Back to Refrigerator</Link>
       <div className="col-md-3 offset-md-2">
@@ -51,6 +56,7 @@ const RecipeCard = props => {
       </div>
     </div>
   );
+  
 };
 
 export default RecipeCard

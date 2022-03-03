@@ -3,20 +3,23 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from "react-redux";
 import { addFilter, removeFilter } from '../action/filter-actions';
 import { getRecipes } from '../action';
+import Header from '../components/header';
 
 import { Link } from "react-router-dom";
 const RecipesList = (props) => {
   const dispatch = useDispatch();
 
-  // not sure if we nee dthis
+  // don't entirely get what this is doing, but I think it lets us
+  // re-render when getRecipes is called
   useEffect(() => {
-    //dispatch(getRecipes());
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // would add dispatch here if we wanted search results to load when the
+    // page loads
   }, [getRecipes]);
 
   const recipes = useSelector((state) => {
-    return state.recipes;
-    // return state.recipes.hits
+
+    // return state.recipes;
+    return state.recipes.hits
   })
 
   const filters_array = useSelector(state => {
@@ -28,6 +31,7 @@ const RecipesList = (props) => {
   })
 
   const [showBox, setShowBox] = useState(false);
+  const [filtersBoxClassName, setFiltersBoxClassName] = useState("filters-box");
   const [selectedIngredients, setSelectedIngredients] = useState([]);
 
 
@@ -47,8 +51,13 @@ const RecipesList = (props) => {
   }
 
   const handleDietaryRestrictionsClick = () => {
-    console.log("dietary")
-    setShowBox(!showBox);
+    const flipState = !showBox
+    setShowBox(flipState);
+    if (flipState) {
+      setFiltersBoxClassName("filters-box show")
+    } else {
+      setFiltersBoxClassName("filters-box")
+    }
   }
 
   const onCheckFilter = (e) => {
@@ -107,21 +116,23 @@ const RecipesList = (props) => {
   }
 
   return ( 
+    <div>
+    <Header />
     <div className="row recipe-page">
-      <Link to='/'>Back</Link>
-      <h1 className="recipe-page-title">Search for Recipes</h1>
+      {/* <h2 className="recipe-page-title">Search for Recipes</h2> */}
       <div className="recipe-section col-md-6 offset-md-1">
         <div className="row card-deck">
           {renderRecipes()}
         </div>
       </div>
       <div className="fridge-section col-md-3 offset-md-1">
-        <button className="btn btn-primary"
-          onClick={handleSearchRecipes}>New Search</button>
-        <button className="btn btn-secondary"
-          onClick={handleDietaryRestrictionsClick}>Add Dietary Restrictions</button>
+        <h3>Build Search Here:</h3>
+        <button className="btn btn-secondary search-buttons"
+            onClick={handleDietaryRestrictionsClick}>Change Dietary Restrictions</button>
+        
         {/* add something that will toggle adding and removing show */}
-        <div className="filters-box show">
+        <div className={filtersBoxClassName}>
+        {/* <div className="filters-box show"> */}
             <h5 className="text-center">Select Dietary Restrictions</h5>
             <form>
               <div className="form-check form-check-inline ">
@@ -196,10 +207,13 @@ const RecipesList = (props) => {
             <form>
               <ul>{renderIngredients()}</ul>
             </form> 
+          
         </div>
-        
-        <Link to='/refrigerator'>Go Back to Fridge</Link>
+        <button className="btn btn-primary search-buttons"
+          onClick={handleSearchRecipes}>New Search</button>
+        <Link to='/refrigerator'>Add to Fridge</Link>
       </div>
+    </div>
     </div>
     
   )
