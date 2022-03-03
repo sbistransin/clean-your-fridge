@@ -72,7 +72,7 @@
 }
 
 .ingredients-box {
-  margin-top: 30px;
+  margin-top: 0px;
   background-color: lightgoldenrodyellow;
   height: 300px;
 }
@@ -86,10 +86,21 @@
 .frige-inventory-header {
   text-align: center;
   margin-top: 15px;
-  font-size: 20px;
 }
 
 .frige-box {
   background-color: silver;
   height: 600px;
+}
+
+.fridge-ingredients {
+  padding-left: 100px;
+}
+
+.fridge-inputs {
+  width: 400px;
+}
+
+.fridge-back-button {
+  width: 80px;
 }

@@ -28,10 +28,6 @@ const Search = () => {
   return (
     <form className="search-bar row" onSubmit={handleSubmit(handleFormSubmit)}>
       <div className="input-group input-group-lg col-md-12" >
-        {/* <div class="input-group-prepend">
-          <span class="input-group-text">With textarea</span>
-        </div>
-        <textarea class="form-control" aria-label="With textarea"></textarea> */}
         <input
           className="form-control"
           aria-label="Enter some ingredients"
