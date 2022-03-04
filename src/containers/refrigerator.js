@@ -24,40 +24,22 @@ const Refrigerator = () => {
   });
 
   const handleFormSubmit = (ingredient, e) => {  
-    dispatch (
-      addIngredient(ingredient)
-    );
+    dispatch (addIngredient(ingredient));
     renderIngredients();
 
     e.target.elements.ingredient.value = ''
     e.target.elements.expiration.value = ''
   }
 
-  const remove = (e) => {
-    dispatch (
-      removeIngredient(e)
-    )
-  }
-
-  const removeButton = (e) => {
-    return (
-      <button className="btn btn-outline-dark remove-button"
-        onClick={() => remove(e)}>remove</button>
-    )
-  }
-
+  const handleRemoveClick = (ingredient) => dispatch(removeIngredient(ingredient))
 
   const renderIngredients = () => {
     if (ingredients.length > 0) {
       return ingredients.map((p) => {
-        return (
-          <div className="icons">
-              
-              <li className="ingredient-item">
-                <span className="remove-ingredient"><FontAwesomeIcon icon={faXmark} className="remove-ingredient"/></span>{p.ingredient} - Expires in {p.expiration} day(s) - {removeButton(p)}
-              </li>         
-         </div>
-          
+        return (        
+          <li className="ingredient-item">
+            <span onClick={() => handleRemoveClick(p)}><FontAwesomeIcon icon={faXmark} className="remove-ingredient"/></span>{p.ingredient} - Expires in {p.expiration} day(s)
+          </li>            
         )
       })
     }
