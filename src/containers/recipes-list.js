@@ -210,7 +210,6 @@ const RecipesList = (props) => {
         </div>
         <button className="btn btn-primary search-buttons"
           onClick={handleSearchRecipes}>New Search</button>
-        <Link to='/refrigerator'>Add to Fridge</Link>
       </div>
     </div>    
   )

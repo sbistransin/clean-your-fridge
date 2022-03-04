@@ -1,13 +1,13 @@
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
+import DatePicker from "react-datepicker";
 import { addIngredient, removeIngredient } from '../action/refrigerator-actions'
 
 let fridgeSchema = Yup.object({
   'ingredient': Yup.string().required(),
-    // .typeError()
-    // .required('This is a required field'),
   'expiration': Yup.number()
     .typeError('Expiration must be a date')
     .required('This is a required field')
@@ -44,6 +44,14 @@ const Refrigerator = () => {
     )
   }
 
+  const [selectedDate, setSelectedDate] = useState(null)
+  // const Example = () => {
+  //   const [startDate, setStartDate] = useState(new Date());
+  //   return (
+  //     <DatePicker selected={startDate} onChange={(date:Date) => setStartDate(date)} />
+  //   );
+  // };
+
 
   const renderIngredients = () => {
     if (ingredients.length > 0) {
@@ -72,14 +80,21 @@ const Refrigerator = () => {
                       {... register('ingredient')}>                 
                     </input>
                     <p className="text-danger mb-3 fridge-inputs">{errors.ingredient?.message}</p>
-                    <input 
+                    {/* <input 
                       placeholder="Expiration"
                       type='number'
                       className="form-control fridge-inputs border-dark"
                       {... register('expiration')}>
-                    </input>
+                    </input> */}
+                  
                     <p className="text-danger mb-3 fridge-inputs">{errors.expiration?.message}</p>
                   </div>
+                  <div>
+                      <DatePicker 
+                        selected={selectedDate}
+                        onChange={date => setSelectedDate(date)}
+                        date='dd/MM/yyyy' />
+                    </div>
                   <input type='submit' className="btn btn-outline-dark ingredient-submit" />
                 </form>   
             </div> 

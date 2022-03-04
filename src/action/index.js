@@ -962,7 +962,14 @@ export function getRecipes(ingredients, filters) {
   
   let url = (`${ROOT_URL}${urlFormat}${APP_ID}${APP_KEY}${filters_string}`)
  
-  const request = axios.get(url);
+  const request = axios.get(url)
+  .catch(function (error) {
+    if (error.response) {
+      alert('Not a valid search!');
+    } else {
+      alert('Error', error.message);
+    }
+});
   return {
     type: FETCH_RECIPES,
     payload: request
