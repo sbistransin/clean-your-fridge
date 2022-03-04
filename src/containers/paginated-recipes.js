@@ -29,12 +29,14 @@ const Items = function ({ currentItems}) {
 
 const PaginatedRecipes = function({ itemsPerPage }) {
 
-  const recipes = useSelector(({ recipes }) => recipes.hits);
+  const recipes = useSelector(({ recipes }) => {
+    return recipes.hits});
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
 
   useEffect(() => {
+    debugger;
     const endOffset = itemOffset + itemsPerPage;
     console.log(`Loading items from ${itemOffset} to ${endOffset}`);
     setCurrentItems(recipes.slice(itemOffset, endOffset));
