@@ -74,6 +74,7 @@ const Refrigerator = () => {
                       className="form-control fridge-inputs border-dark"
                       {... register('expiration')}>
                     </input>
+                  
                     <p className="text-danger mb-3 fridge-inputs">{errors.expiration?.message}</p>
                   </div>
                   <input type='submit' className="btn btn-outline-dark ingredient-submit" />
