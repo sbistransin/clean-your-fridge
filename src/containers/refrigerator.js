@@ -1,17 +1,18 @@
-import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useForm, } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
-import DatePicker from "react-datepicker";
 import { addIngredient, removeIngredient } from '../action/refrigerator-actions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark} from '@fortawesome/free-solid-svg-icons';
+import React from "react";
 
 let fridgeSchema = Yup.object({
   'ingredient': Yup.string().required(),
-  'expiration': Yup.number()
-    .typeError('Expiration must be a date')
+    // .typeError()
+    // .required('This is a required field'),
+  'expiration': Yup.date()
+    .typeError('expiration is a required field')
     .required('This is a required field')
 }).required();
 
@@ -23,7 +24,12 @@ const Refrigerator = () => {
     resolver: yupResolver(fridgeSchema)
   });
 
-  const handleFormSubmit = (ingredient, e) => {  
+  const handleFormSubmit = (ingredient, e) => { 
+    const currentDay = new Date();
+    const expirationDay = new Date(ingredient.expiration);
+    let expires = (expirationDay.getTime() - currentDay.getTime()) / (1000 * 3600 * 24)
+    expires = Math.round(expires)
+    ingredient.expiration = expires
     dispatch (addIngredient(ingredient));
     renderIngredients();
 
@@ -31,33 +37,13 @@ const Refrigerator = () => {
     e.target.elements.expiration.value = ''
   }
 
-  const remove = (e) => {
-    dispatch (
-      removeIngredient(e)
-    )
-  }
-
-  const removeButton = (e) => {
-    return (
-      <button className="btn btn-outline-dark remove-button"
-        onClick={() => remove(e)}>remove</button>
-    )
-  }
-
-  const [selectedDate, setSelectedDate] = useState(null)
-  // const Example = () => {
-  //   const [startDate, setStartDate] = useState(new Date());
-  //   return (
-  //     <DatePicker selected={startDate} onChange={(date:Date) => setStartDate(date)} />
-  //   );
-  // };
-
+  const handleRemoveClick = (ingredient) => dispatch(removeIngredient(ingredient))
 
   const renderIngredients = () => {
     if (ingredients.length > 0) {
-      return ingredients.map((p) => {
+      return ingredients.map((p, index) => {
         return (        
-          <li className="ingredient-item">
+          <li key={index}className="ingredient-item">
             <span onClick={() => handleRemoveClick(p)}><FontAwesomeIcon icon={faXmark} className="remove-ingredient"/></span>{p.ingredient} - Expires in {p.expiration} day(s)
           </li>            
         )
@@ -82,21 +68,15 @@ const Refrigerator = () => {
                       {... register('ingredient')}>                 
                     </input>
                     <p className="text-danger mb-3 fridge-inputs">{errors.ingredient?.message}</p>
-                    {/* <input 
-                      placeholder="Expiration"
-                      type='number'
+                    <input 
+                      id='date'
+                      type='date'
                       className="form-control fridge-inputs border-dark"
                       {... register('expiration')}>
-                    </input> */}
+                    </input>
                   
                     <p className="text-danger mb-3 fridge-inputs">{errors.expiration?.message}</p>
                   </div>
-                  <div>
-                      <DatePicker 
-                        selected={selectedDate}
-                        onChange={date => setSelectedDate(date)}
-                        date='dd/MM/yyyy' />
-                    </div>
                   <input type='submit' className="btn btn-outline-dark ingredient-submit" />
                 </form>   
             </div> 
