@@ -24,7 +24,6 @@ const Refrigerator = () => {
   });
 
   const handleFormSubmit = (ingredient, e) => {  
-    debugger;
     dispatch (
       addIngredient(ingredient)
     );

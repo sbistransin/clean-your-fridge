@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from "react-redux";
 import { addFilter, removeFilter } from '../action/filter-actions';
 import { getRecipes } from '../action';
-import Header from '../components/header';
 import { TEST_RESPONSE } from "../reducers/reducer-recipes";
 
 import { Link } from "react-router-dom";
