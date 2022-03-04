@@ -29,7 +29,7 @@ const RecipesList = (props) => {
   })
 
   const [showBox, setShowBox] = useState(false);
-  const [filtersBoxClassName, setFiltersBoxClassName] = useState("filters-box");
+  const [filtersBoxClassName, setFiltersBoxClassName] = useState("search-box");
   const [selectedIngredients, setSelectedIngredients] = useState([]);
 
 
@@ -52,9 +52,9 @@ const RecipesList = (props) => {
     const flipState = !showBox
     setShowBox(flipState);
     if (flipState) {
-      setFiltersBoxClassName("filters-box show")
+      setFiltersBoxClassName("search-box show col-md-12 jumbotron rounded")
     } else {
-      setFiltersBoxClassName("filters-box")
+      setFiltersBoxClassName("search-box col-md-12 jumbotron rounded")
     }
   }
 
@@ -100,116 +100,112 @@ const RecipesList = (props) => {
 
   const renderIngredients = () => {
     
-    if (fridge_contents.length === 0) {
-      return <div>Nothing is in your fridge :-(</div>
-    } else {
+    if (fridge_contents.length > 0) {
       return fridge_contents.map((i, index) => {
         return (
           <li className="form-check form-check-inline" key={index}>
-            <input className="form-check-input" type="checkbox" id="inlineCheckbox1" value={i.ingredient}
+            <input className="form-check-input" type="checkbox" id={index} value={i.ingredient}
               onChange={onCheckIngredient}/>
-            <label className="form-check-label spacing" htmlFor="inlineCheckbox1">{i.ingredient} - Expires in {i.expiration} day(s)</label>
+            <label className="form-check-label" htmlFor={index}>{i.ingredient} - Expires in {i.expiration} day(s)</label>
           </li>
         )
       })
-    }
+    } 
+    return <div className="lead">No ingredients!</div>
   }
 
   return ( 
     <div className="row recipe-page">
-      {/* <h2 className="recipe-page-title">Search for Recipes</h2> */}
+      <h2 className="page-header">Search for Recipes</h2>
       <div className="recipe-section col-md-6 offset-md-1">
         <div className="row card-deck">
           {renderRecipes()}
         </div>
       </div>
-      <div className="fridge-section col-md-3 offset-md-1">
-        <h3>Build Search Here:</h3>
-        <button className="btn btn-secondary search-buttons"
-            onClick={handleDietaryRestrictionsClick}>Change Dietary Restrictions</button>
-        
-        {/* add something that will toggle adding and removing show */}
-        <div className={filtersBoxClassName}>
-        {/* <div className="filters-box show"> */}
-            <h5 className="text-center">Select Dietary Restrictions</h5>
+      <div className="fridge-section col-md-5">
+        {/* <h4>1. Select Ingredients</h4> */}
+        <div id="h-color" className="col-md-12 jumbotron rounded text-center">
+          <div class="search-inner">
+            <h5>1. Select Ingredients</h5>
             <form>
-              <div className="form-check form-check-inline ">
-                <input className="form-check-input" type="checkbox" id="inlineCheckbox1" value="dairy-free" 
-                  onChange={onCheckFilter}/>
-                <label className="form-check-label spacing" htmlFor="inlineCheckbox1">Dairy-Free</label>
-              </div>
-              <div className="form-check form-check-inline ">
-                <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="egg-free" 
-                  onChange={onCheckFilter}/>
-                <label className="form-check-label spacing" htmlFor="inlineCheckbox2">Egg-free</label>
-              </div>
-              <div className="form-check form-check-inline ">
-                <input className="form-check-input" type="checkbox" id="inlineCheckbox3" value="gluten-free" 
-                  onChange={onCheckFilter}/>
-                <label className="form-check-label spacing" htmlFor="inlineCheckbox3">Gluten-free</label>
-              </div>
-              <div className="form-check form-check-inline ">
-                <input className="form-check-input" type="checkbox" id="inlineCheckbox1" value="fish-free" 
-                  onChange={onCheckFilter}/>
-                <label className="form-check-label spacing" htmlFor="inlineCheckbox1">Fish-free</label>
-              </div>
-              <div className="form-check form-check-inline ">
-                <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="kosher" 
-                  onChange={onCheckFilter}/>
-                <label className="form-check-label spacing" htmlFor="inlineCheckbox2">Kosher</label>
-              </div>
-              <div className="form-check form-check-inline ">
-                <input className="form-check-input" type="checkbox" id="inlineCheckbox3" value="vegan" 
-                  onChange={onCheckFilter}/>
-                <label className="form-check-label spacing" htmlFor="inlineCheckbox3">Vegan</label>
-              </div>
-              <div className="form-check form-check-inline ">
-                <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="vegetarian" 
-                  onChange={onCheckFilter}/>
-                <label className="form-check-label spacing" htmlFor="inlineCheckbox2">Vegetarian</label>
-              </div>
-              <div className="form-check form-check-inline ">
-                <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="peanut-free" 
-                  onChange={onCheckFilter}/>
-                <label className="form-check-label spacing" htmlFor="inlineCheckbox2">Peanut-Free</label>
-              </div>
-              <div className="form-check form-check-inline ">
-                <input className="form-check-input " type="checkbox" id="inlineCheckbox2" value="pescatarian" 
-                  onChange={onCheckFilter}/>
-                <label className="form-check-label spacing" htmlFor="inlineCheckbox2">Pescatarian</label>
-              </div>
-              <div className="form-check form-check-inline ">
-                <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="pork-free" 
-                  onChange={onCheckFilter}/>
-                <label className="form-check-label spacing" htmlFor="inlineCheckbox2">Pork-Free</label>
-              </div>
-              <div className="form-check form-check-inline ">
-                <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="red-meat-free" 
-                  onChange={onCheckFilter}/>
-                <label className="form-check-label spacing" htmlFor="inlineCheckbox2">Red Meat-Free</label>
-              </div>
-              <div className="form-check form-check-inline ">
-                <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="keto-friendly" 
-                  onChange={onCheckFilter}/>
-                <label className="form-check-label spacing" htmlFor="inlineCheckbox2">Keto-Friendly</label>
-              </div>
-              <div className="form-check form-check-inline ">
-                <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="shellfish-free" 
-                  onChange={onCheckFilter}/>
-                <label className="form-check-label spacing" htmlFor="inlineCheckbox2">Shellfish-Free</label>
-              </div>
-            </form>
-            </div>
-        <div className="fridge-box-in-search">
-          <h5 className="text-center">Refrigerator Contents</h5>
-            <form>
-              <ul>{renderIngredients()}</ul>
+              <ul className="lead">{renderIngredients()}</ul>
             </form> 
+          </div>
           
+            <button className="btn btn-secondary search-buttons"
+              onClick={handleDietaryRestrictionsClick}>2. Click For Dietary Restrictions</button>
+            <div id="h-color" className={filtersBoxClassName}>
+              <form>
+                <div className="form-check form-check-inline ">
+                  <input className="form-check-input" type="checkbox" id="inlineCheckbox1" value="dairy-free" 
+                    onChange={onCheckFilter}/>
+                  <label className="lead form-check-label" htmlFor="inlineCheckbox1">Dairy-Free</label>
+                </div>
+                <div className="form-check form-check-inline ">
+                  <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="egg-free" 
+                    onChange={onCheckFilter}/>
+                  <label className="form-check-label lead" htmlFor="inlineCheckbox2">Egg-free</label>
+                </div>
+                <div className="form-check form-check-inline ">
+                  <input className="form-check-input" type="checkbox" id="inlineCheckbox3" value="gluten-free" 
+                    onChange={onCheckFilter}/>
+                  <label className="form-check-label lead" htmlFor="inlineCheckbox3">Gluten-free</label>
+                </div>
+                <div className="form-check form-check-inline ">
+                  <input className="form-check-input" type="checkbox" id="inlineCheckbox1" value="fish-free" 
+                    onChange={onCheckFilter}/>
+                  <label className="form-check-label lead" htmlFor="inlineCheckbox1">Fish-free</label>
+                </div>
+                <div className="form-check form-check-inline ">
+                  <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="kosher" 
+                    onChange={onCheckFilter}/>
+                  <label className="form-check-label lead" htmlFor="inlineCheckbox2">Kosher</label>
+                </div>
+                <div className="form-check form-check-inline ">
+                  <input className="form-check-input" type="checkbox" id="inlineCheckbox3" value="vegan" 
+                    onChange={onCheckFilter}/>
+                  <label className="form-check-label lead" htmlFor="inlineCheckbox3">Vegan</label>
+                </div>
+                <div className="form-check form-check-inline ">
+                  <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="vegetarian" 
+                    onChange={onCheckFilter}/>
+                  <label className="form-check-label lead" htmlFor="inlineCheckbox2">Vegetarian</label>
+                </div>
+                <div className="form-check form-check-inline ">
+                  <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="peanut-free" 
+                    onChange={onCheckFilter}/>
+                  <label className="form-check-label lead" htmlFor="inlineCheckbox2">Peanut-Free</label>
+                </div>
+                <div className="form-check form-check-inline ">
+                  <input className="form-check-input " type="checkbox" id="inlineCheckbox2" value="pescatarian" 
+                    onChange={onCheckFilter}/>
+                  <label className="form-check-label lead" htmlFor="inlineCheckbox2">Pescatarian</label>
+                </div>
+                <div className="form-check form-check-inline ">
+                  <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="pork-free" 
+                    onChange={onCheckFilter}/>
+                  <label className="form-check-label lead" htmlFor="inlineCheckbox2">Pork-Free</label>
+                </div>
+                <div className="form-check form-check-inline ">
+                  <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="red-meat-free" 
+                    onChange={onCheckFilter}/>
+                  <label className="form-check-label lead" htmlFor="inlineCheckbox2">Red Meat-Free</label>
+                </div>
+                <div className="form-check form-check-inline ">
+                  <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="keto-friendly" 
+                    onChange={onCheckFilter}/>
+                  <label className="form-check-label lead" htmlFor="inlineCheckbox2">Keto-Friendly</label>
+                </div>
+                <div className="form-check form-check-inline ">
+                  <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="shellfish-free" 
+                    onChange={onCheckFilter}/>
+                  <label className="form-check-label lead" htmlFor="inlineCheckbox2">Shellfish-Free</label>
+                </div>
+              </form>
+            </div>
+            <button className="btn btn-primary search-buttons"
+              onClick={handleSearchRecipes}>3. New Search</button> 
         </div>
-        <button className="btn btn-primary search-buttons"
-          onClick={handleSearchRecipes}>New Search</button>
-        <Link to='/refrigerator'>Add to Fridge</Link>
       </div>
     </div>    
   )

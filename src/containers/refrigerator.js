@@ -49,7 +49,7 @@ const Refrigerator = () => {
   return (
     <div>
       <div className="row frige-row">
-        <h2 className="frige-header">Refrigerator Inventory</h2>
+        <h2 className="page-header">Refrigerator Inventory</h2>
         <div className="column-container col-md-4 offset-md-1">
           <div className="ingredients-box rounded">
             <div className="ingredient-box-inner">

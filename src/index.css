@@ -11,9 +11,13 @@
   border-bottom: 1px lightgrey solid;
 }
 
-.filters-box {
-  border: solid lightgray;
+.search-box {
   display: none;
+}
+
+.search-inner {
+  padding: 20px;
+  padding-bottom: 10px;
 }
 
 .show {
@@ -33,12 +37,18 @@
   text-align: center;
 }
 
+.recipe-page {
+  margin-top: 30px;
+}
+
 .recipe-section {
-  margin-top: 100px;
+  margin-top: 20px;
 }
 
 .fridge-section {
-  margin-top: 55px;
+  margin-top: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .fridge-box-in-search {
@@ -171,7 +181,7 @@
   padding: 10px;
 }
 
-.frige-header {
+.page-header {
   margin-top: 20px;
   margin-bottom: 50px;
   text-align: center;
