@@ -206,6 +206,8 @@ const RecipesList = (props) => {
             <button className="btn btn-primary search-buttons"
               onClick={handleSearchRecipes}>3. New Search</button> 
         </div>
+        <button className="btn btn-primary search-buttons"
+          onClick={handleSearchRecipes}>New Search</button>
       </div>
     </div>    
   )
