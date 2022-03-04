@@ -1,17 +1,18 @@
-import { useForm } from "react-hook-form";
+import { useForm, } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { addIngredient, removeIngredient } from '../action/refrigerator-actions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark} from '@fortawesome/free-solid-svg-icons';
+import React from "react";
 
 let fridgeSchema = Yup.object({
   'ingredient': Yup.string().required(),
     // .typeError()
     // .required('This is a required field'),
-  'expiration': Yup.number()
-    .typeError('Expiration must be a date')
+  'expiration': Yup.date()
+    .typeError('expiration is a required field')
     .required('This is a required field')
 }).required();
 
@@ -23,7 +24,12 @@ const Refrigerator = () => {
     resolver: yupResolver(fridgeSchema)
   });
 
-  const handleFormSubmit = (ingredient, e) => {  
+  const handleFormSubmit = (ingredient, e) => { 
+    const currentDay = new Date();
+    const expirationDay = new Date(ingredient.expiration);
+    let expires = (expirationDay.getTime() - currentDay.getTime()) / (1000 * 3600 * 24)
+    expires = Math.round(expires)
+    ingredient.expiration = expires
     dispatch (addIngredient(ingredient));
     renderIngredients();
 
@@ -35,9 +41,9 @@ const Refrigerator = () => {
 
   const renderIngredients = () => {
     if (ingredients.length > 0) {
-      return ingredients.map((p) => {
+      return ingredients.map((p, index) => {
         return (        
-          <li className="ingredient-item">
+          <li key={index}className="ingredient-item">
             <span onClick={() => handleRemoveClick(p)}><FontAwesomeIcon icon={faXmark} className="remove-ingredient"/></span>{p.ingredient} - Expires in {p.expiration} day(s)
           </li>            
         )
@@ -63,8 +69,8 @@ const Refrigerator = () => {
                     </input>
                     <p className="text-danger mb-3 fridge-inputs">{errors.ingredient?.message}</p>
                     <input 
-                      placeholder="Expiration"
-                      type='number'
+                      id='date'
+                      type='date'
                       className="form-control fridge-inputs border-dark"
                       {... register('expiration')}>
                     </input>
