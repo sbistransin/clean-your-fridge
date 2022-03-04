@@ -11,13 +11,30 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import promise from "redux-promise";
 import reducers from "./reducers";
+import { throttle } from 'lodash';
+
+import { loadState, saveState } from './components/localStorage';
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
+const persistedState = loadState();
+const store = createStoreWithMiddleware(reducers, persistedState)
+
+store.subscribe(() => {
+  saveState({
+    ingredients: store.getState().ingredients
+  });
+});
+
+store.subscribe(throttle(() => {
+  saveState({
+    ingredients: store.getState().ingredients
+  });
+}, 1000));
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Provider store={createStoreWithMiddleware(reducers)}>
+      <Provider store={store}>
         <App />
       </Provider>
     </BrowserRouter>

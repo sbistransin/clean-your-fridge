@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import DatePicker from "react-datepicker";
 import { addIngredient, removeIngredient } from '../action/refrigerator-actions'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faXmark} from '@fortawesome/free-solid-svg-icons';
 
 let fridgeSchema = Yup.object({
   'ingredient': Yup.string().required(),
@@ -22,9 +24,7 @@ const Refrigerator = () => {
   });
 
   const handleFormSubmit = (ingredient, e) => {  
-    dispatch (
-      addIngredient(ingredient)
-    );
+    dispatch (addIngredient(ingredient));
     renderIngredients();
 
     e.target.elements.ingredient.value = ''
@@ -56,8 +56,10 @@ const Refrigerator = () => {
   const renderIngredients = () => {
     if (ingredients.length > 0) {
       return ingredients.map((p) => {
-        return (
-          <li>{p.ingredient} - Expires in {p.expiration} day(s) - {removeButton(p)}</li>
+        return (        
+          <li className="ingredient-item">
+            <span onClick={() => handleRemoveClick(p)}><FontAwesomeIcon icon={faXmark} className="remove-ingredient"/></span>{p.ingredient} - Expires in {p.expiration} day(s)
+          </li>            
         )
       })
     }
@@ -67,7 +69,7 @@ const Refrigerator = () => {
   return (
     <div>
       <div className="row frige-row">
-        <h2 className="frige-header">Refrigerator Inventory</h2>
+        <h2 className="page-header">Refrigerator Inventory</h2>
         <div className="column-container col-md-4 offset-md-1">
           <div className="ingredients-box rounded">
             <div className="ingredient-box-inner">
@@ -103,7 +105,7 @@ const Refrigerator = () => {
         <div id="h-color" className="col-md-6 jumbotron rounded">
         <h5 className="display-6 frige-inventory-header">Refrigerator Contents:</h5>
         <div className="d-flex justify-content-center fridge-ingredients">
-          <ul class="lead">
+          <ul className="lead">
             {renderIngredients()}
           </ul>
         </div>
